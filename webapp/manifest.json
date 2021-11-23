@@ -96,11 +96,11 @@
                     "name": "TravelObjectPage",
                     "target": "TravelObjectPage"
                 },
-                    {
-                        "pattern": "Travel({key})/_Booking({key2}):?query:",
-                        "name": "BookingObjectPage",
-                        "target": "BookingObjectPage"
-                    }
+                {
+                    "pattern": "Travel({key})/_Booking({key2}):?query:",
+                    "name": "BookingObjectPage",
+                    "target": "BookingObjectPage"
+                }
             ],
             "targets": {
                 "TravelList": {
@@ -117,7 +117,8 @@
                                         "route": "TravelObjectPage"
                                     }
                                 }
-                            }
+                            },
+                            "initialLoad": "Enabled"
                         }
                     }
                 },
@@ -129,27 +130,26 @@
                         "settings": {
                             "editableHeaderContent": false,
                             "entitySet": "Travel",
-                                "navigation": {
-                                    "_Booking": {
-                                        "detail": {
-                                            "route": "BookingObjectPage"
-                                        }
+                            "navigation": {
+                                "_Booking": {
+                                    "detail": {
+                                        "route": "BookingObjectPage"
                                     }
                                 }
-                        }
-                    }
-                },
-                    "BookingObjectPage": {
-                        "type": "Component",
-                        "id": "BookingObjectPage",
-                        "name": "sap.fe.templates.ObjectPage",
-                        "options": {
-                            "settings": {
-                                "editableHeaderContent": false,
-                                "entitySet": "Booking"
                             }
                         }
                     }
+                },
+                "BookingObjectPage": {
+                    "type": "Component",
+                    "id": "BookingObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Booking"
+                        }
+                    }
+                }
             }
         },
         "contentDensities": {
