@@ -1,0 +1,2211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd.zui_travel_d_d.v0001" Alias="SAP__self">
+            <EntityType Name="TravelAgencyType">
+                <Key>
+                    <PropertyRef Name="AgencyID"/>
+                </Key>
+                <Property Name="AgencyID" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="Street" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="PostalCode" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="CountryCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="EMailAddress" Type="Edm.String" Nullable="false"/>
+                <Property Name="WebAddress" Type="Edm.String" Nullable="false"/>
+                <NavigationProperty Name="_Country" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CountryType"/>
+            </EntityType>
+            <EntityType Name="BookingType">
+                <Key>
+                    <PropertyRef Name="BookingUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="BookingUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="TravelUUID" Type="Edm.Guid"/>
+                <Property Name="BookingID" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="BookingDate" Type="Edm.Date"/>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="CustomerName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="AirlineID" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CarrierName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="ConnectionID" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="FlightDate" Type="Edm.Date"/>
+                <Property Name="FlightPrice" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="variable"/>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="BookingStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.I_DraftAdministrativeDataType"/>
+                <NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingType"/>
+                <NavigationProperty Name="_BookingSupplement" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingSupplementType)" Partner="_Booking">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_Carrier" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.AirlineType"/>
+                <NavigationProperty Name="_Connection" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.FlightConnectionType"/>
+                <NavigationProperty Name="_Customer" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.PassengerType"/>
+                <NavigationProperty Name="_Travel" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false" Partner="_Booking"/>
+            </EntityType>
+            <EntityType Name="AirportType">
+                <Key>
+                    <PropertyRef Name="AirportID"/>
+                </Key>
+                <Property Name="AirportID" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="CountryCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <NavigationProperty Name="_Country" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CountryType"/>
+            </EntityType>
+            <EntityType Name="TravelType">
+                <Key>
+                    <PropertyRef Name="TravelUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="TravelUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="TravelID" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="AgencyID" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="AgencyName" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="CustomerName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="BeginDate" Type="Edm.Date"/>
+                <Property Name="EndDate" Type="Edm.Date"/>
+                <Property Name="BookingFee" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="variable"/>
+                <Property Name="TotalPrice" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="variable"/>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false"/>
+                <Property Name="OverallStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="__CreateByAssociationControl" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelCbAControl"/>
+                <Property Name="__FieldControl" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelControl"/>
+                <Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelOperationControl"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.I_DraftAdministrativeDataType"/>
+                <NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType"/>
+                <NavigationProperty Name="_Agency" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelAgencyType"/>
+                <NavigationProperty Name="_Booking" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingType)" Partner="_Travel">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_Currency" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CurrencyType"/>
+                <NavigationProperty Name="_Customer" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.PassengerType"/>
+            </EntityType>
+            <EntityType Name="SupplementTextType">
+                <Key>
+                    <PropertyRef Name="SupplementID"/>
+                    <PropertyRef Name="LanguageCode"/>
+                </Key>
+                <Property Name="SupplementID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LanguageCode" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="SupplementType">
+                <Key>
+                    <PropertyRef Name="SupplementID"/>
+                </Key>
+                <Property Name="SupplementID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SupplementID_Text" Type="Edm.String" Nullable="false"/>
+                <Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="variable"/>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <NavigationProperty Name="_Currency" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CurrencyType"/>
+                <NavigationProperty Name="_SupplText" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.SupplementTextType)"/>
+            </EntityType>
+            <EntityType Name="BookingSupplementType">
+                <Key>
+                    <PropertyRef Name="BookSupplUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="BookSupplUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="TravelUUID" Type="Edm.Guid"/>
+                <Property Name="BookingUUID" Type="Edm.Guid"/>
+                <Property Name="BookingSupplementID" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="SupplementID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SupplementDescription" Type="Edm.String" Nullable="false"/>
+                <Property Name="BookSupplPrice" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="variable"/>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.I_DraftAdministrativeDataType"/>
+                <NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingSupplementType"/>
+                <NavigationProperty Name="_Booking" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingType" Nullable="false" Partner="_BookingSupplement"/>
+                <NavigationProperty Name="_Product" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.SupplementType"/>
+                <NavigationProperty Name="_SupplementText" Type="Collection(com.sap.gateway.srvd.zui_travel_d_d.v0001.SupplementTextType)"/>
+                <NavigationProperty Name="_Travel" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="FlightType">
+                <Key>
+                    <PropertyRef Name="AirlineID"/>
+                    <PropertyRef Name="ConnectionID"/>
+                    <PropertyRef Name="FlightDate"/>
+                </Key>
+                <Property Name="AirlineID" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="AirlineID_Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="ConnectionID" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="FlightDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="variable"/>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="PlaneType" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="MaximumSeats" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="OccupiedSeats" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="_Airline" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.AirlineType"/>
+                <NavigationProperty Name="_Connection" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.FlightConnectionType"/>
+                <NavigationProperty Name="_Currency" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CurrencyType"/>
+            </EntityType>
+            <EntityType Name="CountryType">
+                <Key>
+                    <PropertyRef Name="Country"/>
+                </Key>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Country_Text" Type="Edm.String" Nullable="false" MaxLength="50"/>
+                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CountryISOCode" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="CountryCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="IndexBasedCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="HardCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="TaxCalculationProcedure" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="CountryAlternativeCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="PassengerType">
+                <Key>
+                    <PropertyRef Name="CustomerID"/>
+                </Key>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Street" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="PostalCode" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="CountryCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="EMailAddress" Type="Edm.String" Nullable="false"/>
+                <NavigationProperty Name="_Country" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CountryType"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeDataType">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="DraftAccessType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="InProcessByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+            </EntityType>
+            <EntityType Name="FlightConnectionType">
+                <Key>
+                    <PropertyRef Name="AirlineID"/>
+                    <PropertyRef Name="ConnectionID"/>
+                </Key>
+                <Property Name="AirlineID" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="AirlineID_Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="ConnectionID" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DepartureAirport" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="DestinationAirport" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="DepartureTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="ArrivalTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="Distance" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="DistanceUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <NavigationProperty Name="_Airline" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.AirlineType" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="AirlineType">
+                <Key>
+                    <PropertyRef Name="AirlineID"/>
+                </Key>
+                <Property Name="AirlineID" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <NavigationProperty Name="_Currency" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.CurrencyType"/>
+            </EntityType>
+            <EntityType Name="CurrencyType">
+                <Key>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="Currency_Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Decimals" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="CurrencyISOCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="AlternativeCurrencyKey" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" Nullable="false"/>
+            </EntityType>
+            <ComplexType Name="TravelControl">
+                <Property Name="BookingFee" Type="Edm.Byte" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="TravelCbAControl">
+                <Property Name="_Booking" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="TravelOperationControl">
+                <Property Name="acceptTravel" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="deductDiscount" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="Edit" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="rejectTravel" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="SAP__Message">
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <Property Name="message" Type="Edm.String" Nullable="false"/>
+                <Property Name="longtextUrl" Type="Edm.String" Nullable="true"/>
+                <Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="target" Type="Edm.String" Nullable="false"/>
+                <Property Name="transition" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <Action Name="rejectTravel" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <Action Name="Prepare" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <Action Name="Edit" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <Action Name="acceptTravel" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <Action Name="Discard" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <Action Name="Activate" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <Action Name="deductDiscount" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+                <Parameter Name="discount_percent" Type="Edm.Byte" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType" Nullable="false"/>
+            </Action>
+            <EntityContainer Name="Container">
+                <EntitySet Name="Airline" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.AirlineType">
+                    <NavigationPropertyBinding Path="_Currency" Target="Currency"/>
+                </EntitySet>
+                <EntitySet Name="Airport" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.AirportType">
+                    <NavigationPropertyBinding Path="_Country" Target="Country"/>
+                </EntitySet>
+                <EntitySet Name="Booking" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingType">
+                    <NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Booking"/>
+                    <NavigationPropertyBinding Path="_BookingSupplement" Target="BookingSupplement"/>
+                    <NavigationPropertyBinding Path="_Carrier" Target="Airline"/>
+                    <NavigationPropertyBinding Path="_Connection" Target="FlightConnection"/>
+                    <NavigationPropertyBinding Path="_Customer" Target="Passenger"/>
+                    <NavigationPropertyBinding Path="_Travel" Target="Travel"/>
+                </EntitySet>
+                <EntitySet Name="BookingSupplement" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.BookingSupplementType">
+                    <NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="BookingSupplement"/>
+                    <NavigationPropertyBinding Path="_Booking" Target="Booking"/>
+                    <NavigationPropertyBinding Path="_Product" Target="Supplement"/>
+                    <NavigationPropertyBinding Path="_SupplementText" Target="SupplementText"/>
+                    <NavigationPropertyBinding Path="_Travel" Target="Travel"/>
+                </EntitySet>
+                <EntitySet Name="Country" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.CountryType"/>
+                <EntitySet Name="Currency" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.CurrencyType"/>
+                <EntitySet Name="Flight" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.FlightType">
+                    <NavigationPropertyBinding Path="_Airline" Target="Airline"/>
+                    <NavigationPropertyBinding Path="_Connection" Target="FlightConnection"/>
+                    <NavigationPropertyBinding Path="_Currency" Target="Currency"/>
+                </EntitySet>
+                <EntitySet Name="FlightConnection" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.FlightConnectionType">
+                    <NavigationPropertyBinding Path="_Airline" Target="Airline"/>
+                </EntitySet>
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.I_DraftAdministrativeDataType"/>
+                <EntitySet Name="Passenger" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.PassengerType">
+                    <NavigationPropertyBinding Path="_Country" Target="Country"/>
+                </EntitySet>
+                <EntitySet Name="Supplement" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.SupplementType">
+                    <NavigationPropertyBinding Path="_Currency" Target="Currency"/>
+                    <NavigationPropertyBinding Path="_SupplText" Target="SupplementText"/>
+                </EntitySet>
+                <EntitySet Name="SupplementText" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.SupplementTextType"/>
+                <EntitySet Name="Travel" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelType">
+                    <NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Travel"/>
+                    <NavigationPropertyBinding Path="_Agency" Target="TravelAgency"/>
+                    <NavigationPropertyBinding Path="_Booking" Target="Booking"/>
+                    <NavigationPropertyBinding Path="_Currency" Target="Currency"/>
+                    <NavigationPropertyBinding Path="_Customer" Target="Passenger"/>
+                </EntitySet>
+                <EntitySet Name="TravelAgency" EntityType="com.sap.gateway.srvd.zui_travel_d_d.v0001.TravelAgencyType">
+                    <NavigationPropertyBinding Path="_Country" Target="Country"/>
+                </EntitySet>
+            </EntityContainer>
+            <Annotations Target="SAP__self.TravelAgencyType/AgencyID">
+                <Annotation Term="SAP__common.Text" Path="Name"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelAgencyType/PostalCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelAgencyType/CountryCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_country/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_agency.countrycode'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Länder-/RegSchlüssel"/>
+                <Annotation Term="SAP__common.Heading" String="L/R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Länder-/Regionenschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelAgencyType/PhoneNumber">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelAgencyType">
+                <Annotation Term="SAP__common.Label" String="Agency View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/TravelAgency">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="EMailAddress"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="WebAddress"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>EMailAddress</PropertyPath>
+                                <PropertyPath>WebAddress</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/BookingUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="16 byte UUID in 16 bytes (raw format)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/TravelUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="16 byte UUID in 16 bytes (raw format)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/BookingID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/BookingDate">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/CustomerID">
+                <Annotation Term="SAP__common.Text" Path="CustomerName"/>
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_customer/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_booking_d_d.customerid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Kunden ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Flug Referenz Szenario: Kunden ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/CustomerName">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/AirlineID">
+                <Annotation Term="SAP__common.Text" Path="CarrierName"/>
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_carrier/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_booking_d_d.airlineid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/CarrierName">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/ConnectionID">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_flight/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_booking_d_d.connectionid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/FlightDate">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/FlightPrice">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CurrencyCode"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_flight/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_booking_d_d.flightprice'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/BookingStatus">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/LocalLastChangedAt">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Zeitstempel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UTC-Zeitstempel in Langform (JJJJMMTThhmmssmmmuuun)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/HasDraftEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat Entwurf"/>
+                <Annotation Term="SAP__common.Heading" String="Hat Entw."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat Entwurfsdokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/DraftEntityCreationDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/DraftEntityLastChangeDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/HasActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat aktives Dokument"/>
+                <Annotation Term="SAP__common.Heading" String="Hat aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/IsActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Ist aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Ist aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Booking">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_BookingSupplement"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftActivationVia">
+                    <Collection>
+                        <String>SAP__self.Container/Travel</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="AirlineID"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="FlightPrice"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="BookingStatus"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="HasDraftEntity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="HasActiveEntity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="IsActiveEntity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType/CurrencyCode">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_currency/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_booking_d_d.currencycode'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingType">
+                <Annotation Term="SAP__common.Label" String="Booking Proj View with Draft"/>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Booking"/>
+                            <PropertyValue Property="ID" String="Booking"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Booking Supplement"/>
+                            <PropertyValue Property="ID" String="BookingSupplement"/>
+                            <PropertyValue Property="Target" AnnotationPath="_BookingSupplement/@SAP__UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Booking"/>
+                        <PropertyValue Property="TypeNamePlural" String="Bookings"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="BookingID"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.Identification">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingDate"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="AirlineID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="ConnectionID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightDate"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightPrice"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="AirlineID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="ConnectionID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightPrice"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AirportType/AirportID">
+                <Annotation Term="SAP__common.Text" Path="Name"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AirportType/CountryCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_country/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_airport.countrycode'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Länder-/RegSchlüssel"/>
+                <Annotation Term="SAP__common.Heading" String="L/R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Länder-/Regionenschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AirportType">
+                <Annotation Term="SAP__common.Label" String="Airport View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Airport">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="AirportID"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CountryCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/TravelUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="16 byte UUID in 16 bytes (raw format)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/TravelID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/AgencyID">
+                <Annotation Term="SAP__common.Text" Path="AgencyName"/>
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_agency/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_travel_d_d.agencyid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/AgencyName">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/CustomerID">
+                <Annotation Term="SAP__common.Text" Path="CustomerName"/>
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_customer/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_travel_d_d.customerid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Kunden ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Flug Referenz Szenario: Kunden ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/CustomerName">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/BeginDate">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/EndDate">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/BookingFee">
+                <Annotation Term="SAP__common.FieldControl" Path="__FieldControl/BookingFee"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CurrencyCode"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/TotalPrice">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CurrencyCode"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/OverallStatus">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/LocalLastChangedAt">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Zeitstempel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UTC-Zeitstempel in Langform (JJJJMMTThhmmssmmmuuun)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/HasDraftEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat Entwurf"/>
+                <Annotation Term="SAP__common.Heading" String="Hat Entw."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat Entwurfsdokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/DraftEntityCreationDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/DraftEntityLastChangeDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/HasActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat aktives Dokument"/>
+                <Annotation Term="SAP__common.Heading" String="Hat aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/IsActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Ist aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Ist aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/__CreateByAssociationControl">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/__FieldControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/__OperationControl">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Travel">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Booking"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_Booking"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.Prepare"/>
+                        <PropertyValue Property="EditAction" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.Edit"/>
+                        <PropertyValue Property="DiscardAction" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.Discard"/>
+                        <PropertyValue Property="ActivationAction" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.Activate"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Description"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>__CreateByAssociationControl</PropertyPath>
+                                <PropertyPath>__FieldControl</PropertyPath>
+                                <PropertyPath>__OperationControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Description</PropertyPath>
+                                <PropertyPath>__CreateByAssociationControl</PropertyPath>
+                                <PropertyPath>__FieldControl</PropertyPath>
+                                <PropertyPath>__OperationControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.rejectTravel(SAP__self.TravelType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/rejectTravel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Edit(SAP__self.TravelType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/Edit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.acceptTravel(SAP__self.TravelType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/acceptTravel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.deductDiscount(SAP__self.TravelType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/deductDiscount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType/CurrencyCode">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_currency/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_travel_d_d.currencycode'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.TravelType">
+                <Annotation Term="SAP__common.Label" String="Travel Projection View with Draft"/>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Travel"/>
+                            <PropertyValue Property="ID" String="Travel"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Booking"/>
+                            <PropertyValue Property="ID" String="Booking"/>
+                            <PropertyValue Property="Target" AnnotationPath="_Booking/@SAP__UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Travel"/>
+                        <PropertyValue Property="TypeNamePlural" String="Travels"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="TravelID"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.Identification">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Travel ID"/>
+                            <PropertyValue Property="Value" Path="TravelID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="AgencyID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BeginDate"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="EndDate"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingFee"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalPrice"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Description"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Status"/>
+                            <PropertyValue Property="Value" Path="OverallStatus"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Accept Travel"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.acceptTravel"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reject Travel"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.rejectTravel"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Deduct Discount"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.deductDiscount"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="TravelID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="AgencyID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BeginDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="EndDate"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingFee"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalPrice"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Description"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="OverallStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Deduct Discount"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.deductDiscount"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Reject Travel"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.rejectTravel"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Accept Travel"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_travel_d_d.v0001.acceptTravel"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TravelID"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>TravelID</PropertyPath>
+                        <PropertyPath>AgencyID</PropertyPath>
+                        <PropertyPath>CustomerID</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementTextType/SupplementID">
+                <Annotation Term="SAP__common.Text" Path="Description"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementTextType">
+                <Annotation Term="SAP__common.Label" String="Supplement Text View - CDS Data Model"/>
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/SupplementText">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Description"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Description</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementType/SupplementID">
+                <Annotation Term="SAP__common.Text" Path="SupplementID_Text"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementType/SupplementID_Text">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementType/Price">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CurrencyCode"/>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementType">
+                <Annotation Term="SAP__common.Label" String="Supplement View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Supplement">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SupplementID_Text"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SupplementID_Text</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>eq</String>
+                        <String>ne</String>
+                        <String>gt</String>
+                        <String>ge</String>
+                        <String>lt</String>
+                        <String>le</String>
+                        <String>and</String>
+                        <String>or</String>
+                        <String>contains</String>
+                        <String>startswith</String>
+                        <String>endswith</String>
+                        <String>any</String>
+                        <String>all</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/BookSupplUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="16 byte UUID in 16 bytes (raw format)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/TravelUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="16 byte UUID in 16 bytes (raw format)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/BookingUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="16 byte UUID in 16 bytes (raw format)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/BookingSupplementID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/SupplementID">
+                <Annotation Term="SAP__common.Text" Path="SupplementDescription"/>
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_supplement/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_bookingsupplement_d_d.supplementid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/SupplementDescription">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/BookSupplPrice">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CurrencyCode"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/LocalLastChangedAt">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Zeitstempel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UTC-Zeitstempel in Langform (JJJJMMTThhmmssmmmuuun)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/HasDraftEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat Entwurf"/>
+                <Annotation Term="SAP__common.Heading" String="Hat Entw."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat Entwurfsdokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/DraftEntityCreationDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/DraftEntityLastChangeDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/HasActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat aktives Dokument"/>
+                <Annotation Term="SAP__common.Heading" String="Hat aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/IsActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Ist aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Ist aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/BookingSupplement">
+                <Annotation Term="SAP__common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftActivationVia">
+                    <Collection>
+                        <String>SAP__self.Container/Travel</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SupplementDescription"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SupplementDescription</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType/CurrencyCode">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_currency/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*c_bookingsupplement_d_d.currencycode'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.BookingSupplementType">
+                <Annotation Term="SAP__common.Label" String="BookingSuppl Proj View for Draft RefScen"/>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Booking Supplement"/>
+                            <PropertyValue Property="ID" String="BookingSupplement"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Booking Supplement"/>
+                        <PropertyValue Property="TypeNamePlural" String="Booking Supplements"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Label" String="Booking Supplement"/>
+                                <PropertyValue Property="Value" Path="BookingSupplementID"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.Identification">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingSupplementID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="SupplementID"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookSupplPrice"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingSupplementID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="SupplementID"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BookSupplPrice"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightType/AirlineID">
+                <Annotation Term="SAP__common.Text" Path="AirlineID_Text"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_carrier/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_flight.airlineid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightType/AirlineID_Text">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightType/ConnectionID">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_connection/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_flight.connectionid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightType/Price">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="CurrencyCode"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightType/PlaneType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightType">
+                <Annotation Term="SAP__common.Label" String="Flight View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Flight">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="AirlineID"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Price"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="PlaneType"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/Country">
+                <Annotation Term="SAP__common.Text" Path="Country_Text"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Länder-/RegSchlüssel"/>
+                <Annotation Term="SAP__common.Heading" String="L/R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Länder-/Regionenschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/Country_Text">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Landesbezeichnung"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Bezeichnung des Landes"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryThreeLetterISOCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISO-Code 3-stlg"/>
+                <Annotation Term="SAP__common.Heading" String="ISO-Code 3-stellig"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO-Code des Landes 3stellig"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryThreeDigitISOCode">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="ISO-Code num.3"/>
+                <Annotation Term="SAP__common.Heading" String="ISO-Code numerisch 3stellig"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO-Code des Landes numerisch 3stellig"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryISOCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISO-Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO-Code des Landes"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/TaxCalculationProcedure">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Schema"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Schema (Preisfindung, Nachrichten, Kontenfindung, ...)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryAlternativeCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Alternativschl."/>
+                <Annotation Term="SAP__common.Heading" String="Alternativschlüssel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Alternativländerschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType">
+                <Annotation Term="SAP__common.Label" String="Land"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Country">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Country"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CountryThreeLetterISOCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CountryISOCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CountryCurrency"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="IndexBasedCurrency"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="HardCurrency"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="TaxCalculationProcedure"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CountryAlternativeCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.PassengerType/CustomerID">
+                <Annotation Term="SAP__common.Text" Path="LastName"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Kunden ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Flug Referenz Szenario: Kunden ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PassengerType/PostalCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PassengerType/CountryCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_country/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_customer.countrycode'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Länder-/RegSchlüssel"/>
+                <Annotation Term="SAP__common.Heading" String="L/R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Länder-/Regionenschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PassengerType/PhoneNumber">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PassengerType">
+                <Annotation Term="SAP__common.Label" String="Customer View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Passenger">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="EMailAddress"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>EMailAddress</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftEntityType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurfsentitäts-ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreatedByUser">
+                <Annotation Term="SAP__common.Text" Path="CreatedByUserDescription"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt von"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangedByUser">
+                <Annotation Term="SAP__common.Text" Path="LastChangedByUserDescription"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert von"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftAccessType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurfszugriffstyp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/InProcessByUser">
+                <Annotation Term="SAP__common.Text" Path="InProcessByUserDescription"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf wird bearbeitet von"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsKeptByUser">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf beibeihalten von Benutzer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Von mir erstellter Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Von mir zuletzt geänderter Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Von mir bearbeiteter Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType">
+                <Annotation Term="SAP__common.Label" String="Verwaltungsdaten für Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/I_DraftAdministrativeData">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityType"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreatedByUser"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangedByUser"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftAccessType"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="InProcessByUser"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftIsKeptByUser"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftIsCreatedByMe"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftIsLastChangedByMe"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftIsProcessedByMe"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/AirlineID">
+                <Annotation Term="SAP__common.Text" Path="AirlineID_Text"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_carrier/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_connection.airlineid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/AirlineID_Text">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/ConnectionID">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/DepartureAirport">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_airport/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_connection.departureairport'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/DestinationAirport">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/dmo/i_airport/0001;ps='srvd-zui_travel_d_d-0001';va='com.sap.gateway.srvd.zui_travel_d_d.v0001.et-*dmo*i_connection.destinationairport'/$metadata</String>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType">
+                <Annotation Term="SAP__common.Label" String="Connection View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/FlightConnection">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="AirlineID"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DepartureAirport"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DestinationAirport"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Distance"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DistanceUnit"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.AirlineType/AirlineID">
+                <Annotation Term="SAP__common.Text" Path="Name"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+            </Annotations>
+            <Annotations Target="SAP__self.AirlineType">
+                <Annotation Term="SAP__common.Label" String="Carrier View - CDS Data Model"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Airline">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="AirlineID"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType/Currency">
+                <Annotation Term="SAP__common.Text" Path="Currency_Text"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType/Currency_Text">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Beschreibung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType/CurrencyISOCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISO-Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO-Währungscode"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType/AlternativeCurrencyKey">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Alternativschlüssel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Alternativer Schlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType/IsPrimaryCurrencyForISOCrcy">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="primär"/>
+                <Annotation Term="SAP__common.Heading" String="primärer SAP-Code zum ISO-Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="primärer SAP-Währungscode zum ISO-Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType">
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Currency">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CurrencyISOCode"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="AlternativeCurrencyKey"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="IsPrimaryCurrencyForISOCrcy"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftUUID">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf (techn. ID)"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf (technische ID)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf (technische ID)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/ProcessingStartDateTime">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf in Bearbeitung seit"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf in Bearb. seit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/EnqueueStartDateTime">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf gesperrt seit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreatedByUserDescription">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt von (Beschreibung)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert von (Beschr.)"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf zuletzt geändert von (Beschreibung)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf zuletzt geändert von (Beschreibung)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/InProcessByUserDescription">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf wird bearbeitet von (Beschr.)"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf wird bearbeitet von (Beschreibung)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf wird bearbeitet von (Beschreibung)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.SupplementTextType/LanguageCode">
+                <Annotation Term="SAP__common.Label" String="Sprachenschlüssel"/>
+                <Annotation Term="SAP__common.Heading" String="Sprache"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryCurrency">
+                <Annotation Term="SAP__common.Label" String="Landeswährung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/IndexBasedCurrency">
+                <Annotation Term="SAP__common.Label" String="Indexwährung"/>
+                <Annotation Term="SAP__common.Heading" String="IndWr"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel der Indexwährung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/HardCurrency">
+                <Annotation Term="SAP__common.Label" String="Hartwährung"/>
+                <Annotation Term="SAP__common.Heading" String="HrtWr"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel der Hartwährung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreationDateTime">
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangeDateTime">
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/Distance">
+                <Annotation Term="SAP__measures.Unit" Path="DistanceUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.FlightConnectionType/DistanceUnit">
+                <Annotation Term="SAP__common.Label" String="Interne Maßeinheit"/>
+                <Annotation Term="SAP__common.Heading" String="ME"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Maßeinheit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CurrencyType/Decimals">
+                <Annotation Term="SAP__common.Label" String="Dezimalstellen"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Anzahl Dezimalstellen"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
