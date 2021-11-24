@@ -1,0 +1,43 @@
+specVersion: "2.4"
+metadata:
+  name: ztravelrapdv4
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: true
+        backend:
+          - path: /sap
+            url: https://svi.sap.swm.de:44320
+            client: "100"
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: ""
+        bsp: ZTRAVELRAPDV4
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: dist
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: ztravelrapdv4
+    - name: fiori-tools-servestatic
+      beforeMiddleware: fiori-tools-proxy
+      configuration:
+        paths:
+          - path: /**/ZTRAVELRAPDV4
+            src: dist
+          - path: /**/ztravelrapdv4
+            src: dist
+resources:
+  configuration:
+    paths:
+      webapp: dist
