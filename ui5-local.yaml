@@ -1,10 +1,10 @@
 specVersion: "2.4"
 metadata:
-  name: "ztravelrapdv4"
+  name: ztravelrapdv4
 type: application
 framework:
   name: SAPUI5
-  version: "1.96.0"
+  version: 1.96.0
   libraries:
     - name: sap.m
     - name: sap.ushell
@@ -15,7 +15,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertError: true
         backend:
           - path: /sap
             url: https://svi.sap.swm.de:44320
@@ -34,3 +34,8 @@ server:
       configuration:
         port: 35729
         path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: ztravelrapdv4

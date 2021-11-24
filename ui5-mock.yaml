@@ -1,13 +1,13 @@
 specVersion: "2.4"
 metadata:
-  name: "ztravelrapdv4"
+  name: ztravelrapdv4
 type: application
 server:
   customMiddleware:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertError: true
         backend:
           - path: /sap
             url: https://svi.sap.swm.de:44320
@@ -17,7 +17,7 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
-          version: # The UI5 version, for instance, 1.78.1. Empty means latest version
+          version: ""
     - name: sap-fe-mockserver
       beforeMiddleware: fiori-tools-proxy
       configuration:
@@ -32,3 +32,8 @@ server:
       configuration:
         port: 35729
         path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: ztravelrapdv4
