@@ -20,15 +20,15 @@ server:
           - path: /sap
             url: https://svi.sap.swm.de:44320
             client: "100"
-    - name: sap-fe-mockserver
-      beforeMiddleware: fiori-tools-proxy
-      configuration:
-        service:
-          urlBasePath: /sap/opu/odata4/sap/zui_travel_d_d_sb_v4/srvd/sap/zui_travel_d_d/0001
-          name: ""
-          metadataXmlPath: ./webapp/localService/metadata.xml
-          mockdataRootPath: ./webapp/localService/mockdata
-          generateMockData: true
+    # - name: sap-fe-mockserver
+    #   beforeMiddleware: fiori-tools-proxy
+    #   configuration:
+    #     service:
+    #       urlBasePath: /sap/opu/odata4/sap/zui_travel_d_d_sb_v4/srvd/sap/zui_travel_d_d/0001
+    #       name: ""
+    #       metadataXmlPath: ./webapp/localService/metadata.xml
+    #       mockdataRootPath: ./webapp/localService/mockdata
+    #       generateMockData: true
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
