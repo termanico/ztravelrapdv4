@@ -12,7 +12,8 @@
   ],
   "main": "webapp/index.html",
   "scripts": {
-    "start": "fiori run --config ./ui5-local.yaml --open 'index.html?sap-ui-language=en'",
+    "start": "fiori run --config ./ui5-local.yaml --open 'test/flpSandbox.html?sap-client=100#ztravelrapdv4-tile'",
+    "start-old": "fiori run --config ./ui5-local.yaml --open 'index.html?sap-ui-language=en'",
     "start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandbox.html?sap-client=100#ztravelrapdv4-tile'",
     "start-noflp": "fiori run --open 'index.html?sap-client=100'",
     "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
