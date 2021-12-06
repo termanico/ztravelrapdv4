@@ -27,18 +27,18 @@
     "start-embedded": "npm run build && fiori run --config ./flp.yaml --open sap/bc/ui5_ui5/ui2/ushell/shells/abap/Fiorilaunchpad.html?sap-ushell-nocb=true"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "7.14.7",
+    "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+    "@sap/ux-specification": "^1.90.15",
+    "@sap/ux-ui5-fe-mockserver-middleware": "^1.4.6",
+    "@sap/ux-ui5-tooling": "^1.4.3",
+    "@sapui5/ts-types": "1.92.2",
     "@ui5/cli": "^2.11.1",
     "@ui5/fs": "^2.0.6",
     "@ui5/logger": "^2.0.1",
-    "@sap/ux-ui5-tooling": "1",
-    "rimraf": "3.0.2",
-    "@sap/ux-specification": "latest",
-    "@sap/ux-ui5-fe-mockserver-middleware": "1",
     "eslint": "7.32.0",
-    "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-    "@sapui5/ts-types": "1.92.2",
     "eslint-plugin-fiori-custom": "2.2.1",
-    "@babel/eslint-parser": "7.14.7"
+    "rimraf": "3.0.2"
   },
   "ui5": {
     "dependencies": [
